@@ -1,0 +1,10 @@
+[package]
+name = "rivi-bqn"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+cbqn = { git = "https://github.com/Detegr/cbqn-rs", branch = "master" }
+rivi-loader = { git = "https://github.com/periferia-labs/rivi-loader", branch = "ramp" }
