@@ -114,7 +114,8 @@ checksum = "14c189c53d098945499cdfa7ecc63567cf3886b3332b312a5b4585d8d3a6a610"
 [[package]]
 name = "cbqn"
 version = "0.0.8"
-source = "git+https://github.com/Detegr/cbqn-rs?branch=master#080c7985b0b44dc75e49a3c85ed1e0b8f13f1f9b"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c0d1687dd1a4872561158ddceaddb86ba086ba36e510f99f8f640c8b46612763"
 dependencies = [
  "cbqn-sys",
  "once_cell",

@@ -6,5 +6,5 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-cbqn = { git = "https://github.com/Detegr/cbqn-rs", branch = "master" }
+cbqn = "0.0.8"
 rivi-loader = { git = "https://github.com/periferia-labs/rivi-loader", branch = "ramp" }
