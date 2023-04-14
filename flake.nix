@@ -11,11 +11,6 @@
     , juuso
     , ...
     }:
-    let
-      system = "x86_64-darwin";
-      pkgs = import nixpkgs { inherit system; };
-      savilerow = pkgs.callPackage (import "${juuso}/pkgs/savilerow/default.nix") { };
-    in
     flake-utils.lib.eachDefaultSystem (system:
     let
       overlays = [ (import rust-overlay) ];
@@ -28,7 +23,7 @@
           (rustVersion.override { extensions = [ "rust-src" ]; })
           pkgs.libffi
         ];
-        packages = with pkgs; [ rustc cargo idris savilerow ];
+        packages = with pkgs; [ rustc cargo idris juuso.packages.${system}.savilerow ];
       };
       defaultPackage = pkgs.rustPlatform.buildRustPackage
         {
