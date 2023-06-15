@@ -7,4 +7,5 @@ edition = "2021"
 
 [dependencies]
 cbqn = "0.0.8"
+rivi-std = { git = "https://github.com/periferia-labs/rivi-std" }
 rivi-loader = { git = "https://github.com/periferia-labs/rivi-loader", branch = "ramp" }
