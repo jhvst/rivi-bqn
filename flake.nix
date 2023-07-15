@@ -1,28 +1,25 @@
 {
   inputs = {
-    rust-overlay.url = "github:oxalica/rust-overlay";
+    naersk.url = "github:nix-community/naersk";
     juuso.url = "github:jhvst/nix-config";
   };
   outputs =
     { self
     , nixpkgs
     , flake-utils
-    , rust-overlay
+    , naersk
     , juuso
     , ...
     }:
     flake-utils.lib.eachDefaultSystem (system:
     let
-      overlays = [ (import rust-overlay) ];
-      pkgs = import nixpkgs { inherit system overlays; };
-      rustVersion = pkgs.rust-bin.stable.latest.default;
+      naersk' = pkgs.callPackage naersk { };
+      pkgs = import nixpkgs { inherit system; };
+      nativeBuildInputs = with pkgs; [ pkgconfig libffi libiconv ];
     in
     {
       devShells.default = pkgs.mkShell {
-        buildInputs = [
-          (rustVersion.override { extensions = [ "rust-src" ]; })
-          pkgs.libffi
-        ];
+        inherit nativeBuildInputs;
         packages = with pkgs; [
           rustc
           cargo
@@ -37,18 +34,13 @@
           })
         ];
       };
-      defaultPackage = pkgs.rustPlatform.buildRustPackage
-        {
-          pname = "rivi-bqn";
-          version = "0.1.0";
-          src = ./.;
+      defaultPackage = naersk'.buildPackage {
+        inherit nativeBuildInputs;
 
-          cargoLock = {
-            lockFile = ./Cargo.lock;
-            outputHashes = {
-              "rivi-loader-0.2.0" = "5Xr+itpPZ4ZF3GPNlz8NGdiNFyu3JZSdvZQi5jSEZog=";
-            };
-          };
-        };
+        pname = "rivi-bqn";
+        version = "0.1.0";
+        src = ./.;
+
+      };
     });
 }

@@ -1,7 +1,7 @@
 use cbqn::*;
 use rivi_loader::{DebugOption, GroupCount, PushConstant, Task, Vulkan};
 
-pub fn gpu_run() {
+fn main() {
     let vk = Vulkan::new(DebugOption::None).unwrap();
     let gpus = vk.compute.as_ref().unwrap();
 
