@@ -6,6 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-cbqn = "0.0.8"
+cbqn = "0.1.1"
 rivi-std = { git = "https://github.com/periferia-labs/rivi-std" }
 rivi-loader = { git = "https://github.com/periferia-labs/rivi-loader", branch = "ramp" }

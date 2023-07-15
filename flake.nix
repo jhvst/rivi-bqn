@@ -15,7 +15,7 @@
     let
       naersk' = pkgs.callPackage naersk { };
       pkgs = import nixpkgs { inherit system; };
-      nativeBuildInputs = with pkgs; [ pkgconfig libffi libiconv ];
+      nativeBuildInputs = with pkgs; [ pkgconfig libffi libiconv cbqn ];
     in
     {
       devShells.default = pkgs.mkShell {
